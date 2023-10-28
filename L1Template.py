@@ -65,7 +65,7 @@ if 'finish_reading' not in st.session_state or not st.session_state.finish_readi
         "The text is easily comprehensible and reads smoothly. Comprehensibility is not an issue.",
         "The text is very easily comprehensible and highly readable. The ideas and the purpose are clearly stated."
     ))
-    st.session_state.coherence_and_cohesion = st.radio("8) Is the text coherent and cohesive (e.g. cohesive devices, strategies)?", (
+    st.session_state.coherence_and_cohesion = st.radio("**8) Is the text coherent and cohesive (e.g. cohesive devices, strategies)?**", (
         "The text is not at all coherent. Unrelated progressions and coherence breaks are very common. The writer does not use any anaphoric device. The text is not atall cohesive. Connectives are hardly ever used and ideas are unrelated.",
         "The text is scarcely coherent. The writer often uses unrelated progressions; when coherence is achieved, it is often done through repetitions. Only a few anaphoric devices are used. There are some coherence breaks. The text is not very cohesive. Ideas are not well linked by connectives, which are rarely used.",
         "The text is somewhat coherent. Unrelated progressions and/or repetitions are frequent. More than two sentences in a row can have the same subject (even when the subject is understood). Some anaphoric devices are used. There can be a few coherence breaks. The text is somewhat cohesive. Some connectives are used, but they are mostly conjunctions.",
