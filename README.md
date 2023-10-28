@@ -2,8 +2,8 @@
 I have created this template for the first part of my thesis project, which will be used with L1 Italian speakers. The text presented in its current form is created using the pipeline I have built before. For the sake of easier adjustments, this text is hard-coded into the web app so that there will be no need to regenerate the text each time the page is refreshed.
 
 ## Things I Have Implemented
-Currently, I have implemented the following questions:
 
+Currently, I have implemented the following questions
 - What was the topic of the text?
 - On a scale of 1-5, how enjoyable was this text?
 - How would you describe the Italian level of this text?
