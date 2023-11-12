@@ -14,8 +14,6 @@ if 'starting_time' not in st.session_state:
 st.write("**Utente ID:** " + str(st.session_state.user_id),
          "**Orario di inizio:** " + st.session_state.starting_time)
 st.info("Grazie per unirti al nostro studio. In questo studio, leggerai un breve testo su un certo argomento e ti verrà chiesto di rispondere a delle domande a riguardo. Leggi attentamente il testo e cerca di rispondere alle domande nel miglior modo possibile.")
-st.write("**Info for the Professor Judit Gervain:** The text above is an example text I have generated using the pipeline. The parameters were the following: topic: Covid-19, level: A2, style: formal. The model used was gpt-3.5-turbo. So one of the first things that we can manipulate is the information given in the title I am automatically parsing the parameter used in the text for generating it (in this case it is covid 19) and I am using that in the title. One of the things I have considered is not even giving this information in the title and adding it as a question after they have completed the reading task. ")
-
 text = """ 
 
 La pandemia di COVID-19 è stata una sfida globale che ha colpito il mondo intero. Questa malattia, causata dal coronavirus SARS-CoV-2, è emersa per la prima volta alla fine del 2019 ed è rapidamente diventata una crisi sanitaria di proporzioni straordinarie.
@@ -25,37 +23,36 @@ Per affrontare la pandemia, molti paesi hanno implementato misure restrittive, c
 L'aspetto positivo è che sono stati sviluppati diversi vaccini efficaci contro il COVID-19, che hanno contribuito a ridurre la diffusione del virus e il numero di casi gravi. La vaccinazione è ora una delle principali strategie per superare la pandemia.
 In conclusione, il COVID-19 ha rappresentato una sfida senza precedenti per il mondo intero, ma grazie all'adozione di misure preventive, alla ricerca scientifica e alla vaccinazione, stiamo facendo progressi nel combattere questa malattia. È fondamentale continuare a seguire le linee guida delle autorità sanitarie per proteggere la nostra salute e quella degli altri.
 """
-st.header("A text about Covid-19")
+st.header("Un testo su Covid-19.")
 st.write(text)
 st.header("Questions about the text")
 if 'finish_reading' not in st.session_state or not st.session_state.finish_reading:
     st.session_state.user_topic = st.text_input(
-        "**1) What was the topic of the text?**")
+        "**1) Per favore, brevemente (non più di 1-3 parole), descrivi l'argomento del testo.**")
     st.session_state.enjoyment = st.select_slider(
-        "**2) From 1-7 how enjoyable was this text**", options=[1, 2, 3, 4, 5, 6, 7], value=1)
-    info = st.toggle("Click here to see the information about the levels")
+        "**2) Da 1 a 7, quanto è stato piacevole questo testo?**", options=[1, 2, 3, 4, 5, 6, 7], value=1)
+    info = st.toggle("Clicca qui per vedere le informazioni sui livelli.")
     if info:
-         st.info("""CEFR A1 Level (Basic): A1 users communicate with basic phrases and vocabulary for everyday situations, and need clear, slow speech for understanding. They're limited to immediate contexts and simple language structures.
-        
+        st.info("""Livello CEFR A1 (Base): Gli utenti A1 comunicano con frasi e vocabolario di base per situazioni quotidiane e necessitano di un discorso chiaro e lento per la comprensione. Sono limitati ai contesti immediati e a strutture linguistiche semplici.
 
-CEFR A2 Level (Basic): A2 learners understand and communicate on a range of familiar topics using simple sentences, but struggle with fluent conversation and complex grammar.
+Livello CEFR A2 (Base): I discenti A2 comprendono e comunicano su una gamma di argomenti familiari utilizzando frasi semplici, ma faticano con la conversazione fluente e la grammatica complessa.
 
-CEFR B1 Level (Independent): B1 users participate in discussions on familiar subjects and describe personal interests, albeit with some difficulty when the subject is unfamiliar or complex.
+Livello CEFR B1 (Indipendente): Gli utenti B1 partecipano a discussioni su argomenti familiari e descrivono interessi personali, sebbene con qualche difficoltà quando l'argomento è sconosciuto o complesso.
 
-CEFR B2 Level (Independent): B2 individuals understand and articulate thoughts on familiar topics clearly, engaging in conversation with native speakers, but find abstract and unfamiliar content challenging.
+Livello CEFR B2 (Indipendente): Gli individui B2 comprendono e articolano chiaramente i pensieri su argomenti familiari, impegnandosi in conversazioni con madrelingua, ma trovano contenuti astratti e sconosciuti una sfida.
 
-CEFR C1 Level (Proficient): C1 speakers use language flexibly and effectively for social, academic, and professional purposes, with errors being rare and minor, but may not fully master very idiomatic language.
+Livello CEFR C1 (Esperto): I parlanti C1 usano la lingua in modo flessibile ed efficace per scopi sociali, accademici e professionali, con errori che sono rari e minori, ma potrebbero non padroneggiare completamente il linguaggio molto idiomatico.
 
-CEFR C2 Level (Proficient): C2 users comprehend and express themselves in any situation, using language akin to a native speaker, with an excellent grasp of nuance and subtlety. """)
-         
+Livello CEFR C2 (Esperto): Gli utenti C2 comprendono ed esprimono se stessi in qualsiasi situazione, utilizzando un linguaggio simile a quello di un madrelingua, con un'eccellente padronanza di sfumature e sottigliezze.""")
+
     st.session_state.user_level = st.selectbox(
-        "**3) How would you describe the italian level of this text**", ("A1", "A2", "B1", "B2", "C1", "C2"))
+        "**3) Come descriveresti il livello di italiano di questo testo?**", ("A1", "A2", "B1", "B2", "C1", "C2"))
     st.session_state.robot_or_human = st.selectbox(
-        "**4) Do you think this text was written by a human or was it generated by an AI**", (
-            "AI", "Human")
+        "**4) Pensi che questo testo sia stato scritto da un umano o sia stato generato da un'AI**", (
+            "AI", "Umano")
     )
     st.session_state.user_tone = st.selectbox(
-        "**5) From the following options, what was the tone of the text?**", ("formal", "informal", "neutral"))
+        "**5) Dalle seguenti opzioni, qual era il tono del testo?**", ("formale", "informale", "neutrale"))
     st.session_state.content = st.radio("**6) Is the number of information units provided in the text adequate and relevant?**",
                                         ("None of the questions and the requirements of the task have been answered.",
                                          "Some (less than half) of the questions and the requirements of the task have been answered.",
