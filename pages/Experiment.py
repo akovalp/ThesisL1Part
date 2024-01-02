@@ -25,7 +25,7 @@ In conclusione, il COVID-19 ha rappresentato una sfida senza precedenti per il m
 """
 st.header("Un testo su Covid-19.")
 st.write(text)
-st.header("Questions about the text")
+st.header("Domande sul testo")
 if 'finish_reading' not in st.session_state or not st.session_state.finish_reading:
     st.session_state.user_topic = st.text_input(
         "**1) Per favore, brevemente (non più di 1-3 parole), descrivi l'argomento del testo.**")
@@ -53,13 +53,13 @@ Livello CEFR C2 (Esperto): Gli utenti C2 comprendono ed esprimono se stessi in q
     )
     st.session_state.user_tone = st.selectbox(
         "**5) Dalle seguenti opzioni, qual era il tono del testo?**", ("formale", "informale", "neutrale"))
-    st.session_state.content = st.radio("**6) Is the number of information units provided in the text adequate and relevant?**",
-                                        ("None of the questions and the requirements of the task have been answered.",
-                                         "Some (less than half) of the questions and the requirements of the task have been answered.",
-                                         "Approximately half of the questions and requirements of the task have been answered.",
-                                         "Most (morethan half) of the questions and the requirements of the task have been answered",
-                                         "Almost all the questions and the requirements of the task have been answered.",
-                                         "All the questions and the requirements of the task have been answered."
+    st.session_state.content = st.radio("**6) Does the text have enough relevant information?**",
+                                        ("The text has very few ideas, and they don't relate to each other.",
+                                         "The text has just a few ideas, and they aren't very consistent.",
+                                         "The text has a fair amount of ideas, but they aren't always consistent.",
+                                         "The text has a good amount of ideas, and they are fairly consistent.",
+                                         "The text has plenty of ideas, and they are very consistent with each other.",
+                                         "The text has an excellent amount of ideas, and they are extremely consistent with each other."
                                          ))
     st.session_state.task_requirements = st.radio("**7) Have the task requirements been fulfilled successfully (e.g. genre, speech acts, register)?**", (
         "None of the questions and the requirements of the task have been answered.",
@@ -69,21 +69,21 @@ Livello CEFR C2 (Esperto): Gli utenti C2 comprendono ed esprimono se stessi in q
         "Almost all the questions and the requirements of the task have been answered.",
         "All the questions and the requirements of the task have been answered."
     ))
-    st.session_state.comprehensibility = st.radio("**8) How much effort is required to understand text purpose and ideas?**", (
-        "The text is not at all comprehensible. Ideas and purposes are unclearly stated and the efforts of the reader to understand the text are ineffective.",
-        "The text is scarcely comprehensible. Its purposes are not clearly stated and the reader struggles to understand the ideas of the writer. The reader has to guess most of the ideas and purposes.",
-        "The text is somewhat comprehensible. Some sentences are hard to understand at a first reading. A second reading helps to clarify the purposes of the text and the ideas conveyed, but some doubts persist.",
-        "The text is comprehensible. Only a few sentences are unclear but are understood, without too much effort, after a second reading.",
-        "The text is easily comprehensible and reads smoothly. Comprehensibility is not an issue.",
-        "The text is very easily comprehensible and highly readable. The ideas and the purpose are clearly stated."
+    st.session_state.comprehensibility = st.radio("**8) How easy is it to understand the purpose and ideas of the text?**", (
+        "The text is completely unclear. Its ideas and purpose are not understandable, and trying to understand it is futile.",
+        "The text is barely understandable. The purpose isn't clear and the reader has to guess most of the ideas",
+        "The text is somewhat understandable. Some parts are hard to get on the first try, but a second read helps clarify things, though some doubts remain.",
+        "The text is understandable. A few parts might be unclear, but they can be understood after a second read without much effort.",
+        "The text is easy to understand and flows well. There are no issues with comprehensibility.",
+        "The text is very easy to understand and highly engaging. The ideas and purpose are stated clearly"
     ))
-    st.session_state.coherence_and_cohesion = st.radio("**9) Is the text coherent and cohesive (e.g. cohesive devices, strategies)?**", (
-        "The text is not at all coherent. Unrelated progressions and coherence breaks are very common. The writer does not use any anaphoric device. The text is not atall cohesive. Connectives are hardly ever used and ideas are unrelated.",
-        "The text is scarcely coherent. The writer often uses unrelated progressions; when coherence is achieved, it is often done through repetitions. Only a few anaphoric devices are used. There are some coherence breaks. The text is not very cohesive. Ideas are not well linked by connectives, which are rarely used.",
-        "The text is somewhat coherent. Unrelated progressions and/or repetitions are frequent. More than two sentences in a row can have the same subject (even when the subject is understood). Some anaphoric devices are used. There can be a few coherence breaks. The text is somewhat cohesive. Some connectives are used, but they are mostly conjunctions.",
-        "The text is coherent. Unrelated progressions are somewhat rare, but the writer sometimes relies on repetitions to achieve coherence. A sufficient number of anaphoric devices is used. There may be some coherence breaks. The text is cohesive. The writer makes good use of connectives, sometimes not limiting this to conjunctions.",
-        "The text is very coherent: when the writer introduces a new topic, it is usually done by using connectives or connective phrases. Repetitions are very infrequent. Anaphoric devices are numerous. There are no coherence breaks. The text is very cohesive and ideas are well linked by adverbial and/or verbal connectives.",
-        "The writer ensures extreme coherence by integrating new ideas in the text with connectives or connective phrases. Anaphoric devices are used regularly. There are few incidences of unrelated progressions and no coherence breaks. The structure of the text is extremely cohesive, thanks to a skillful use of connectives (especially linking chunks, verbal constructions and adverbials), often used to describe relationships between ideas.",
+    st.session_state.coherence_and_cohesion = st.radio("**9) How well does the text stick together and make sense as a whole (using things like linking words and strategies)?**", (
+        "The text makes no sense at all. It jumps around a lot with no clear connection between ideas. There's no use of linking words or phrases",
+        "The text barely makes sense. It often jumps to unrelated topics, sometimes using repetition to connect ideas. Very few linking words are used and ideas don't connect well.",
+        "The text makes some sense, but there are frequent unrelated topics or repetitions. It uses some basic linking words, but the ideas aren't always connected smoothly",
+        "The text is mostly coherent. Unrelated topics are rare, but there's some reliance on repetition. It uses a good amount of linking words, including more than just basic conjunctions.",
+        "The text is very coherent. New topics are introduced smoothly with linking words or phrases, and repetition is rare. It uses a variety of linking words effectively, making ideas connect well.",
+        "The text is extremely coherent and cohesive. New ideas are integrated seamlessly with a variety of linking words and phrases. There's no jumping around or repetition, and the text flows very smoothly.",
     ))
     if st.session_state.user_topic == "":
         st.write("Please be sure that you have filled all the questions.")
