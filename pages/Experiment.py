@@ -51,40 +51,41 @@ Livello CEFR C2 (Esperto): Gli utenti C2 comprendono ed esprimono se stessi in q
         "**4) Pensi che questo testo sia stato scritto da un umano o sia stato generato da un'AI**", (
             "AI", "Umano")
     )
-    st.session_state.user_tone = st.selectbox(
-        "**5) Dalle seguenti opzioni, qual era il tono del testo?**", ("formale", "informale", "neutrale"))
-    st.session_state.content = st.radio("**6) Does the text have enough relevant information?**",
-                                        ("The text has very few ideas, and they don't relate to each other.",
-                                         "The text has just a few ideas, and they aren't very consistent.",
-                                         "The text has a fair amount of ideas, but they aren't always consistent.",
-                                         "The text has a good amount of ideas, and they are fairly consistent.",
-                                         "The text has plenty of ideas, and they are very consistent with each other.",
-                                         "The text has an excellent amount of ideas, and they are extremely consistent with each other."
-                                         ))
-    st.session_state.task_requirements = st.radio("**7) Have the task requirements been fulfilled successfully (e.g. genre, speech acts, register)?**", (
-        "None of the questions and the requirements of the task have been answered.",
-        "Some (less than half) of the questions and the requirements of the task have been answered.",
-        "Approximately half of the questions and requirements of the task have been answered.",
-        "Most (morethan half) of the questions and the requirements of the task have been answered",
-        "Almost all the questions and the requirements of the task have been answered.",
-        "All the questions and the requirements of the task have been answered."
+    st.session_state.user_tone = st.radio(
+        "**5) Quanto formale è il tono di questo testo?**", ("Molto informale", "Informale", "Neutrale", "Formale", "Molto formale"))
+    st.session_state.content = st.radio("**6) Il testo contiene informazioni sufficienti e pertinenti?**",
+                                        ("Il testo contiene pochissime idee, e queste non sono correlate tra loro.",
+                                        "Il testo presenta solo alcune idee, e non sono molto coerenti.",
+                                        "Il testo ha una discreta quantità di idee, ma non sono sempre coerenti.",
+                                        "Il testo ha una buona quantità di idee, e sono abbastanza coerenti.",
+                                        "Il testo ha molte idee, e sono molto coerenti tra loro.",
+                                        "Il testo ha un'eccellente quantità di idee, e sono estremamente coerenti tra loro."
+                                        ))
+    st.session_state.task_requirements = st.radio("**7) I requisiti del compito sono stati soddisfatti con successo (ad esempio, genere, atti di parlato, registro)?**", (
+        "Nessuna delle domande e dei requisiti del compito è stata soddisfatta.",
+        "Alcune (meno della metà) delle domande e dei requisiti del compito sono state soddisfatte.",
+        "Circa la metà delle domande e dei requisiti del compito sono state soddisfatte.",
+        "La maggior parte (più della metà) delle domande e dei requisiti del compito sono state soddisfatte",
+        "Quasi tutte le domande e i requisiti del compito sono stati soddisfatti.",
+        "Tutte le domande e i requisiti del compito sono stati soddisfatti."
     ))
-    st.session_state.comprehensibility = st.radio("**8) How easy is it to understand the purpose and ideas of the text?**", (
-        "The text is completely unclear. Its ideas and purpose are not understandable, and trying to understand it is futile.",
-        "The text is barely understandable. The purpose isn't clear and the reader has to guess most of the ideas",
-        "The text is somewhat understandable. Some parts are hard to get on the first try, but a second read helps clarify things, though some doubts remain.",
-        "The text is understandable. A few parts might be unclear, but they can be understood after a second read without much effort.",
-        "The text is easy to understand and flows well. There are no issues with comprehensibility.",
-        "The text is very easy to understand and highly engaging. The ideas and purpose are stated clearly"
+    st.session_state.comprehensibility = st.radio("**8) Quanto è facile comprendere lo scopo e le idee del testo?**", (
+        "Il testo è completamente incomprensibile. Le sue idee e il suo scopo non sono comprensibili e cercare di capirlo è inutile.",
+        "Il testo è a malapena comprensibile. Lo scopo non è chiaro e il lettore deve indovinare la maggior parte delle idee",
+        "Il testo è abbastanza comprensibile. Alcune parti sono difficili da capire al primo tentativo, ma una seconda lettura aiuta a chiarire le cose, anche se rimangono alcuni dubbi.",
+        "Il testo è comprensibile. Alcune parti potrebbero essere poco chiare, ma possono essere comprese dopo una seconda lettura senza troppi sforzi.",
+        "Il testo è facile da comprendere e scorre bene. Non ci sono problemi di comprensibilità.",
+        "Il testo è molto facile da comprendere e molto coinvolgente. Le idee e lo scopo sono espressi chiaramente"
     ))
-    st.session_state.coherence_and_cohesion = st.radio("**9) How well does the text stick together and make sense as a whole (using things like linking words and strategies)?**", (
-        "The text makes no sense at all. It jumps around a lot with no clear connection between ideas. There's no use of linking words or phrases",
-        "The text barely makes sense. It often jumps to unrelated topics, sometimes using repetition to connect ideas. Very few linking words are used and ideas don't connect well.",
-        "The text makes some sense, but there are frequent unrelated topics or repetitions. It uses some basic linking words, but the ideas aren't always connected smoothly",
-        "The text is mostly coherent. Unrelated topics are rare, but there's some reliance on repetition. It uses a good amount of linking words, including more than just basic conjunctions.",
-        "The text is very coherent. New topics are introduced smoothly with linking words or phrases, and repetition is rare. It uses a variety of linking words effectively, making ideas connect well.",
-        "The text is extremely coherent and cohesive. New ideas are integrated seamlessly with a variety of linking words and phrases. There's no jumping around or repetition, and the text flows very smoothly.",
+    st.session_state.coherence_and_cohesion = st.radio("**9) Quanto bene il testo rimane unito e ha senso nel suo insieme (usando cose come parole di collegamento e strategie)?**", (
+        "Il testo non ha senso affatto. Salta molto da un argomento all'altro senza un chiaro collegamento tra le idee. Non viene utilizzato alcun tipo di parole di collegamento",
+        "Il testo ha poco senso. Spesso salta su argomenti non correlati, a volte utilizzando la ripetizione per collegare le idee. Vengono utilizzate pochissime parole di collegamento e le idee non si collegano bene.",
+        "Il testo ha un certo senso, ma ci sono frequenti argomenti non correlati o ripetizioni. Utilizza alcune parole di collegamento di base, ma le idee non sono sempre collegate in modo fluido",
+        "Il testo è per lo più coerente. Gli argomenti non correlati sono rari, ma c'è una certa dipendenza dalla ripetizione. Utilizza una buona quantità di parole di collegamento, inclusi più che semplici congiunzioni.",
+        "Il testo è molto coerente. I nuovi argomenti vengono introdotti in modo fluido con parole o frasi di collegamento, e la ripetizione è rara. Utilizza una varietà di parole di collegamento in modo efficace, facendo sì che le idee si colleghino bene.",
+        "Il testo è estremamente coerente e coeso. Le nuove idee vengono integrate senza problemi con una varietà di parole e frasi di collegamento. Non ci sono salti di argomenti o ripetizioni, e il testo fluisce molto agevolmente.",
     ))
+
     if st.session_state.user_topic == "":
         st.write("Please be sure that you have filled all the questions.")
         button = st.button("Submit answers", disabled=True)
